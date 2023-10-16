@@ -15,17 +15,18 @@
           >
         </div>
         <div class="col-md-12 mb-3">
-          <label for="plate_type_id">Tipo de placa</label>
-          <input
-            required
-            type="text"
-            class="form-control"
-            id="plate_type_id"
-            v-model.trim="$v.form.plate_type_id.$model"
-            :state="!$v.form.plate_type_id.$error"
-            placeholder="Ingresar nota"
-          >
-        </div>
+            <label for="plate_type_id">Tipo de placa</label>
+            <select
+              required
+              class="form-control"
+              id="plate_type_id"
+              v-model.trim="$v.form.plate_type_id.$model"
+              :state="!$v.form.plate_type_id.$error"
+            >
+              <option value="" disabled>Seleccionar tipo de placa</option>
+              <option v-for="datos in datosPosts2" :key="datos.id">{{ datos.id }}</option>
+            </select>
+          </div>
         <div class="col-md-12 mb-3">
           <label for="vin">VIN</label>
           <input
@@ -86,18 +87,19 @@
             placeholder="Ingresar plate_number"
           >
         </div>
-        <div class="col-md-12 mb-3">
-          <label for="plate_type_id">Tipo de placa</label>
-          <input
-            required
-            type="text"
-            class="form-control"
-            id="plate_type_id"
-            v-model.trim="$v.form.plate_type_id.$model"
-            :state="!$v.form.plate_type_id.$error"
-            placeholder="Ingresar nota"
-          >
-        </div>
+          <div class="col-md-12 mb-3">
+            <label for="plate_type_id">Tipo de placa</label>
+            <select
+              required
+              class="form-control"
+              id="plate_type_id"
+              v-model.trim="$v.form.plate_type_id.$model"
+              :state="!$v.form.plate_type_id.$error"
+            >
+              <option value="" disabled>Seleccionar tipo de placa</option>
+              <option v-for="datos in datosPosts2" :key="datos.id">{{ datos.id }}</option>
+            </select>
+          </div>
         <div class="col-md-12 mb-3">
           <label for="vin">VIN</label>
           <input
@@ -256,6 +258,7 @@ export default {
       this.typeOptions = response.data
     })
     this.getDatos()
+    this.getDatos2()
     console.log('Aqui ya esta montado el componente')
   },
   beforeDestroy () {
@@ -318,6 +321,12 @@ export default {
     getDatos () {
       axios.get(laravelUrl + '/vehicle/').then((response) => {
         this.datosPosts = response.data
+      })
+    },
+    getDatos2 () {
+      axios.get(laravelUrl + '/plate/').then((response) => {
+        this.datosPosts2 = response.data
+        console.log(this.datosPosts2)
       })
     },
     postEstado (accion, datos) {
