@@ -4,7 +4,7 @@ export default {
   webBaseURL: process.env.MIX_APP_URL
 }
 export const apiUrl = 'http://localhost:3000'
-export const laravelUrl = 'http://localhost:8000'
+export const laravelUrl = 'http://localhost:8000/api'
 export const currentUser = {
   id: 1,
   title: 'Sarah Kortney',

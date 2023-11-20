@@ -120,9 +120,8 @@ import Especialidad from '../views/App/Medicos/Especialidad'
 import Socios from '../views/App/Medicos/Socios'
 
 // alumnos
-import vehiculo from '../views/App/Tarea/vehiculos'
+import vehiculo from '../views/App/Tarea/libreria'
 import placa from '../views/App/Tarea/placas'
-
 Vue.use(VueRouter)
 
 const AdminRoutes = (prop, mode) => [
@@ -188,9 +187,9 @@ const placaRoute = (prop, mode) => [
 ]
 const vehiculoRoute = (prop, mode) => [
   {
-    path: 'vehiculosrel',
-    name: prop + '.vehiculo',
-    meta: { dark: mode, auth: true, name: 'vehiculo' },
+    path: 'libreria',
+    name: prop + '.libreria',
+    meta: { dark: mode, auth: true, name: 'libreria' },
     component: vehiculo
   }
 ]
@@ -755,11 +754,11 @@ const routes = [
     children: AdminRoutes('gerencia')
   },
   {
-    path: '/vehiculos',
-    name: 'vehiculo',
+    path: '/libreria',
+    name: 'libreria',
     component: Layout1,
     meta: { auth: true },
-    children: vehiculoRoute('vehiculo')
+    children: vehiculoRoute('libreria')
   },
   {
     path: '/placas',

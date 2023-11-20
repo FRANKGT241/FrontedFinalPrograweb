@@ -3,64 +3,27 @@
     <b-modal id="modal-1" ref="modal-1" size="xl" title="Agregar nuevo registro">
       <form>
         <div class="col-md-12 mb-3">
-          <label for="plate_number">Numero de placa</label>
+          <label for="nombre">Nombre</label>
           <input
             required
             type="text"
             class="form-control"
-            id="plate_number"
-            v-model.trim="$v.form.plate_number.$model"
-            :state="!$v.form.plate_number.$error"
-            placeholder="Ingresar plate_number"
+            id="nombre"
+            v-model.trim="$v.form.nombre.$model"
+            :state="!$v.form.nombre.$error"
+            placeholder="Ingresar nombre"
           >
         </div>
         <div class="col-md-12 mb-3">
-            <label for="plate_type_id">Tipo de placa</label>
-            <select
-              required
-              class="form-control"
-              id="plate_type_id"
-              v-model.trim="$v.form.plate_type_id.$model"
-              :state="!$v.form.plate_type_id.$error"
-            >
-              <option value="" disabled>Seleccionar tipo de placa</option>
-              <option v-for="datos in datosPosts2" :key="datos.id">{{ datos.id }}</option>
-            </select>
-          </div>
-        <div class="col-md-12 mb-3">
-          <label for="vin">VIN</label>
+          <label for="descripcion">Descripcion</label>
           <input
             required
             type="text"
             class="form-control"
-            id="vin"
-            v-model.trim="$v.form.vin.$model"
-            :state="!$v.form.vin.$error"
-            placeholder="Ingresar vin"
-          >
-        </div>
-        <div class="col-md-12 mb-3">
-          <label for="owner_name">Dueño</label>
-          <input
-            required
-            type="text"
-            class="form-control"
-            id="owner_name"
-            v-model.trim="$v.form.owner_name.$model"
-            :state="!$v.form.owner_name.$error"
-            placeholder="Ingresar dueño"
-          >
-        </div>
-        <div class="col-md-12 mb-3">
-          <label for="chasis_number">Numero de chasis</label>
-          <input
-            required
-            type="text"
-            class="form-control"
-            id="chasis_number"
-            v-model.trim="$v.form.chasis_number.$model"
-            :state="!$v.form.chasis_number.$error"
-            placeholder="Ingresar chasis"
+            id="descripcion"
+            v-model.trim="$v.form.descripcion.$model"
+            :state="!$v.form.descripcion.$error"
+            placeholder="Ingresar descripcion"
           >
         </div>
       </form>
@@ -76,66 +39,45 @@
     <b-modal id="modal-2" ref="modal-2" title="Editar registro">
       <form>
         <div class="col-md-12 mb-3">
-          <label for="plate_number">Numero de placa</label>
+          <label for="nombre">Nombre</label>
           <input
             required
             type="text"
             class="form-control"
-            id="plate_number"
-            v-model.trim="$v.form.plate_number.$model"
-            :state="!$v.form.plate_number.$error"
-            placeholder="Ingresar plate_number"
-          >
-        </div>
-          <div class="col-md-12 mb-3">
-            <label for="plate_type_id">Tipo de placa</label>
-            <select
-              required
-              class="form-control"
-              id="plate_type_id"
-              v-model.trim="$v.form.plate_type_id.$model"
-              :state="!$v.form.plate_type_id.$error"
-            >
-              <option value="" disabled>Seleccionar tipo de placa</option>
-              <option v-for="datos in datosPosts2" :key="datos.id">{{ datos.id }}</option>
-            </select>
-          </div>
-        <div class="col-md-12 mb-3">
-          <label for="vin">VIN</label>
-          <input
-            required
-            type="text"
-            class="form-control"
-            id="vin"
-            v-model.trim="$v.form.vin.$model"
-            :state="!$v.form.vin.$error"
-            placeholder="Ingresar vin"
+            id="nombre"
+            v-model.trim="$v.form.nombre.$model"
+            :state="!$v.form.nombre.$error"
+            placeholder="Ingresar nombre"
           >
         </div>
         <div class="col-md-12 mb-3">
-          <label for="owner_name">Dueño</label>
+          <label for="descripcion">Descripcion</label>
           <input
             required
             type="text"
             class="form-control"
-            id="owner_name"
-            v-model.trim="$v.form.owner_name.$model"
-            :state="!$v.form.owner_name.$error"
-            placeholder="Ingresar dueño"
+            id="descripcion"
+            v-model.trim="$v.form.descripcion.$model"
+            :state="!$v.form.descripcion.$error"
+            placeholder="Ingresar descripcion"
           >
         </div>
         <div class="col-md-12 mb-3">
-          <label for="chasis_number">Numero de chasis</label>
-          <input
-            required
-            type="text"
-            class="form-control"
-            id="chasis_number"
-            v-model.trim="$v.form.chasis_number.$model"
-            :state="!$v.form.chasis_number.$error"
-            placeholder="Ingresar chasis"
-          >
-        </div>
+  <label for="estado">Estado</label>
+  <select
+    required
+    class="form-control"
+    id="estado"
+    v-model.trim="$v.form.estado.$model"
+    :state="!$v.form.estado.$error"
+  >
+    <option value="" disabled selected>Seleccionar estado</option>
+    <option value="pendiente">Pendiente</option>
+    <option value="cancelada">Cancelada</option>
+    <option value="completada">Completada</option>
+  </select>
+</div>
+
       </form>
       <template #modal-footer="{}">
         <b-button  variant="primary" @click="onState()"
@@ -148,7 +90,7 @@
     </b-modal>
     <b-modal id="modal-5" ref="modal-5" title="Eliminar usuario">
       <h6 class="my-4">
-        ¿Desea eliminar este usuario?
+        ¿Desea eliminar este registro?
       </h6>
       <template #modal-footer="{}">
         <b-button
@@ -200,34 +142,25 @@
           <template v-slot:body>
             <table class="table">
                 <thead>
-                    <th>
+                  <th>
                       Acciones
                     </th>
                     <th>
-                      Número de placa
+                      Nombre
                     </th>
                     <th>
-                      Id tipo placa
+                      Descripcion
                     </th>
                     <th>
-                      VIN
-                    </th >
-                    <th >
-                      Dueño
+                      Estado
                     </th>
-                    <th >
-                      Numero de chasis
-                    </th>
-
                 </thead>
                 <tbody>
                     <tr v-for="datos in datosPosts" :key="datos.id">
                         <td><template><button class="btn btn-success" v-b-modal.modal-2 @click="openModal('update',datos.id)">Editar</button></template><template><button class="btn btn-danger"  v-b-modal.modal-5 @click="openModal('delete',datos.id)">Eliminar</button></template></td>
-                        <td v-text="datos.plate_number"></td>
-                        <td v-text="datos.plate_type_id"></td>
-                        <td v-text="datos.vin"></td>
-                        <td v-text="datos.owner_name"></td>
-                        <td v-text="datos.chasis_number"></td>
+                        <td v-text="datos.nombre"></td>
+                        <td v-text="datos.descripcion"></td>
+                        <td><template><button  :class="{'btn btn-warning': datos.estado === 'pendiente', 'btn btn-danger': datos.estado === 'cancelada', 'btn btn-success': datos.estado === 'completada'}" v-text="datos.estado" @click="actualizarestado()"></button></template></td>
                     </tr>
                 </tbody>
             </table>
@@ -239,7 +172,6 @@
 </template>
 <script>
 import { xray } from '../../../config/pluginInit'
-// import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue'
 import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import axios from 'axios'
@@ -258,7 +190,6 @@ export default {
       this.typeOptions = response.data
     })
     this.getDatos()
-    this.getDatos2()
     console.log('Aqui ya esta montado el componente')
   },
   beforeDestroy () {
@@ -278,22 +209,20 @@ export default {
       datosPosts: [],
       form: {
         id: 0,
-        plate_number: '',
-        plate_type_id: '',
-        vin: '',
-        owner_name: '',
-        chasis_number: ''
+        descripcion: '',
+        nombre: '',
+        estado: ''
       },
-      apiBase: laravelUrl + '/vehicle/',
+      apiBase: laravelUrl + '/tarea/',
       typeOptions: [],
       options: [
-        { value: '1', nombre: 'Chasis' }
+        { value: '1', nombre: 'Tarea' }
       ],
       columna: { value: '1', nombre: 'Titulo' },
       fields: [
         {
-          name: 'chasis',
-          sortField: 'chasis',
+          name: 'tare',
+          sortField: 'tarea',
           title: 'Titulo',
           dataClass: 'list-item-heading'
         }
@@ -303,38 +232,28 @@ export default {
   validations () {
     return {
       form: {
-        plate_number: { required },
-        plate_type_id: { required },
-        vin: { required },
-        owner_name: { required },
-        chasis_number: { required }
+        descripcion: { required },
+        nombre: { required },
+        estado: { required }
       }
     }
   },
   methods: {
     eliminarRegistro (datos) {
-      axios.delete(laravelUrl + '/vehicle/' + datos.id).then((response) => {
+      axios.delete(laravelUrl + '/tarea/' + datos.id).then((response) => {
         console.log('Eliminado correctamente')
         this.getDatos()
       })
     },
     getDatos () {
-      axios.get(laravelUrl + '/vehicle/').then((response) => {
+      axios.get(laravelUrl + '/tarea/').then((response) => {
         this.datosPosts = response.data
       })
     },
-    getDatos2 () {
-      axios.get(laravelUrl + '/plate/').then((response) => {
-        this.datosPosts2 = response.data
-        console.log(this.datosPosts2)
-      })
-    },
     postEstado (accion, datos) {
-      this.form.plate_number = datos.plate_number
-      this.form.plate_type_id = datos.plate_type_id
-      this.form.vin = datos.vin
-      this.form.owner_name = datos.owner_name
-      this.form.chasis_number = datos.chasis_number
+      this.form.descripcion = datos.descripcion
+      this.form.nombre = datos.nombre
+      this.form.estado = datos.estado
 
       if (accion === 1) {
         this.mensaje('Este post esta completo')
@@ -349,22 +268,18 @@ export default {
         case 'save': {
           this.$v.$reset()
           this.form.id = 0
-          this.form.plate_number = ''
-          this.form.plate_type_id = ''
-          this.form.vin = ''
-          this.form.owner_name = ''
-          this.form.chasis_number = ''
+          this.form.descripcion = ''
+          this.form.nombre = ''
+          this.form.estado = ''
           break
         }
         case 'update': {
           const dataid = this.datosPosts.find(dato => dato.id === id)
           if (dataid) {
             this.form.id = dataid.id
-            this.form.plate_number = dataid.plate_number
-            this.form.plate_type_id = dataid.plate_type_id
-            this.form.vin = dataid.vin
-            this.form.owner_name = dataid.owner_name
-            this.form.chasis_number = dataid.chasis_number
+            this.form.descripcion = dataid.descripcion
+            this.form.nombre = dataid.nombre
+            this.form.estado = dataid.estado
           }
           this.$refs['modal-2'].show()
           break
@@ -373,11 +288,9 @@ export default {
           const dataidDel = this.datosPosts.find(dato => dato.id === id)
           if (dataidDel) {
             this.form.id = dataidDel.id
-            this.form.plate_number = dataidDel.plate_number
-            this.form.plate_type_id = dataidDel.plate_type_id
-            this.form.vin = dataidDel.vin
-            this.form.owner_name = dataidDel.owner_name
-            this.form.chasis_number = dataidDel.chasis_number
+            this.form.descripcion = dataidDel.descripcion
+            this.form.nombre = dataidDel.nombre
+            this.form.estado = dataidDel.estado
           }
           this.$refs['modal-5'].show()
           break
@@ -390,24 +303,24 @@ export default {
           this.$v.$reset()
           this.$refs['modal-1'].hide()
           this.form.id = 0
-          this.form.plate_number = ''
-          this.form.plate_type_id = ''
-          this.form.vin = ''
-          this.form.owner_name = ''
+          this.form.descripcion = ''
+          this.form.precioPublico = ''
+          this.form.nombre = ''
+          this.form.estado = ''
           this.form.Nota_Parcial = ''
-          this.form.chasis_number = ''
+          this.form.modeloA = ''
           break
         }
         case 'update': {
           this.$v.$reset()
           this.$refs['modal-2'].hide()
           this.form.id = 0
-          this.form.plate_number = ''
-          this.form.plate_type_id = ''
-          this.form.vin = ''
-          this.form.owner_name = ''
+          this.form.descripcion = ''
+          this.form.precioPublico = ''
+          this.form.nombre = ''
+          this.form.estado = ''
           this.form.Nota_Parcial = ''
-          this.form.chasis_number = ''
+          this.form.modeloA = ''
           break
         }
       }
@@ -423,21 +336,19 @@ export default {
       }
     },
     setData (data) {
-      this.form.plate_number = data.plate_number
-      this.form.plate_type_id = data.plate_type_id
-      this.form.vin = data.vin
-      this.form.owner_name = data.owner_name
-      this.form.chasis_number = data.chasis_number
+      this.form.descripcion = data.descripcion
+      this.form.nombre = data.nombre
+      this.form.estado = data.estado
     },
     /* Guardar */
     onSave () {
       const me = this
-      axios.post(laravelUrl + '/vehicle/', {
-        plate_number: me.form.plate_number,
-        plate_type_id: me.form.plate_type_id,
-        vin: me.form.vin,
-        owner_name: me.form.owner_name,
-        chasis_number: me.form.chasis_number })
+      axios.post(laravelUrl + '/tarea/', {
+        descripcion: me.form.descripcion,
+        precioPublico: me.form.precioPublico,
+        nombre: me.form.nombre,
+        estado: me.form.estado,
+        modeloA: me.form.modeloA })
         .then((response) => {
           me.getDatos()
           me.closeModal('save')
@@ -447,15 +358,32 @@ export default {
           console.error('Error!', error)
         })
     },
+    actualizarestado () {
+      let me = this
+      const estados = ['cancelada', 'completada', 'pendiente']
+      const indiceEstado = estados.indexOf(me.form.estado)
+      const nuevoEstado = estados[(indiceEstado + 1) % estados.length]
+
+      axios.put(laravelUrl + '/tarea/' + this.form.id, {
+        descripcion: me.form.descripcion,
+        nombre: me.form.nombre,
+        estado: nuevoEstado
+      }).then((response) => {
+        me.form.estado = nuevoEstado
+        this.getDatos()
+      }).catch((error) => {
+        console.error('Hubo un error!', error)
+      })
+    },
     onState () {
       let me = this
       console.log(this.form.id)
-      axios.put(laravelUrl + '/vehicle/' + this.form.id, {
-        plate_number: me.form.plate_number,
-        plate_type_id: me.form.plate_type_id,
-        vin: me.form.vin,
-        owner_name: me.form.owner_name,
-        chasis_number: me.form.chasis_number }).then((response) => {
+      axios.put(laravelUrl + '/tarea/' + this.form.id, {
+        descripcion: me.form.descripcion,
+        precioPublico: me.form.precioPublico,
+        nombre: me.form.nombre,
+        estado: me.form.estado,
+        modeloA: me.form.modeloA }).then((response) => {
         me.$refs['modal-2'].hide()
         this.getDatos()
       })
@@ -466,7 +394,7 @@ export default {
     deleteUser () {
       let me = this
       console.log(this.form.id)
-      axios.delete(laravelUrl + '/vehicle/' + this.form.id).then((response) => {
+      axios.delete(laravelUrl + '/tarea/' + this.form.id).then((response) => {
         me.$refs['modal-5'].hide()
         this.getDatos()
       })
